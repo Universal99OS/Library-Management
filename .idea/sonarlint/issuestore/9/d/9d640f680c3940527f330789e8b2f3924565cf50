@@ -1,3 +1,11 @@
 
-_
-java:S2094"BRemove this empty class, write its code or make it an "interface".(’òîí8øÅÅ×1
+D
+java:S1068"(Remove this unused "isbn" private field.(û÷Óa8½Û¶£×1
+K
+java:S1068")Remove this unused "title" private field.(åõò¹ıÿÿÿÿ8¿Û¶£×1
+G
+java:S1068"*Remove this unused "author" private field.(á™Ï8ÀÛ¶£×1
+N
+java:S1068",Remove this unused "category" private field.(‘Ñ¤’üÿÿÿÿ8ÁÛ¶£×1
+I
+java:S1068"'Remove this unused "qty" private field.(«ØŸíøÿÿÿÿ8ÂÛ¶£×1
