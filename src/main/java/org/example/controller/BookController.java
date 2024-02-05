@@ -24,7 +24,7 @@ public class BookController {
         return bookService.save(dto);
 
     }
-    @GetMapping("/read")
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Iterable<Book> getBooks(){
         return bookService.getBooks();
@@ -35,6 +35,12 @@ public class BookController {
         return bookService.delete(id)?
                 ResponseEntity.ok("Deleted"):
                 ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/search/{id}")
+    @ResponseStatus(HttpStatus.FOUND)
+    public BookDto getBookById(@PathVariable Long id){
+        return bookService.getBookById(id);
     }
 
 

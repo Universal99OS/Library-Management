@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @Primary
 @RequiredArgsConstructor
@@ -51,5 +53,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getBooks() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public BookDto getBookById(Long id) {
+        Optional<Book> byId = bookRepository.findById(id);
+        if(byId.isPresent()){
+            return mapper.convertValue(byId.get(),BookDto.class);
+        }else {
+            return null;
+        }
     }
 }

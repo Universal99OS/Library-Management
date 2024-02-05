@@ -9,4 +9,6 @@ import java.util.List;
 public interface BookService extends CrudService<BookDto> {
 
     List<Book> getBooks();
+
+    BookDto getBookById(Long id);
 }
