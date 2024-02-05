@@ -1,17 +1,29 @@
 package org.example.service.custom.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.example.dto.BookDto;
+import org.example.entity.Book;
+import org.example.repository.BookRepository;
 import org.example.service.custom.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 @Primary
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
+
+    final BookRepository bookRepository;
+    @Autowired
+    ObjectMapper mapper;
     @Override
     public boolean save(BookDto dto) {
-        return false;
+        Book book = mapper.convertValue(dto, Book.class);
+        bookRepository.save(book);
+        return true;
     }
 
     @Override
