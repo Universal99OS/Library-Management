@@ -40,4 +40,10 @@ public class BookServiceImpl implements BookService {
     public List<BookDto> getAll() {
         return null;
     }
+
+
+    @Override
+    public List<Book> getBooks() {
+        return (List<Book>) bookRepository.findAll();
+    }
 }
