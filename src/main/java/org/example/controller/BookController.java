@@ -6,6 +6,7 @@ import org.example.entity.Book;
 import org.example.service.custom.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,16 @@ public class BookController {
     }
     @GetMapping("/read")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    Iterable<Book> getBooks(){
+    public Iterable<Book> getBooks(){
         return bookService.getBooks();
     }
+    @DeleteMapping("/delete {id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<String > delete(@PathVariable Long id){
+        return bookService.delete(id)?
+                ResponseEntity.ok("Deleted"):
+                ResponseEntity.notFound().build();
+    }
+
 
 }

@@ -32,9 +32,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean delete(String id) {
-        return false;
+    public boolean delete(Long id) {
+        if(bookRepository.existsById(id)){
+            bookRepository.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
     }
+
 
     @Override
     public List<BookDto> getAll() {
@@ -44,6 +50,6 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getBooks() {
-        return (List<Book>) bookRepository.findAll();
+        return bookRepository.findAll();
     }
 }
